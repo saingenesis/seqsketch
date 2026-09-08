@@ -1,0 +1,37 @@
+node_modules/
+dist/
+*.tsbuildinfo
+*.log
+
+# Local exports and collected research data
+*.seqsketch.json
+*.dataset.json
+*.curve.svg
+*.stroke.svg
+data/
+datasets/
+exports/
+work/
+outputs/
+
+# Portable binaries and generated runtime state
+/app/
+/runtime/
+server-state.json
+*.exe
+*.zip
+*.7z
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.pfx
+.idea/
+.vscode/
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini

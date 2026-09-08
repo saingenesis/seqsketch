@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>顺序矢量素描 · 使用说明</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#26352d;font:16px/1.85 "Microsoft YaHei",system-ui,sans-serif;letter-spacing:0}main{max-width:860px;margin:0 auto;padding:42px 24px 72px}header{border-bottom:2px solid #2e775b;padding-bottom:22px;margin-bottom:28px}h1{font-size:28px;line-height:1.4;margin:0 0 10px}h2{font-size:20px;margin:34px 0 12px}p{margin:10px 0}header p{color:#637169;font-size:14px}ol,ul{padding-left:25px}li{margin:9px 0}strong{font-weight:650}a{color:#216a50;overflow-wrap:anywhere}code{font:14px/1.8 Consolas,monospace;background:#f0f4f1;padding:2px 4px;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;font-size:14px;margin-top:15px}td,th{border-bottom:1px solid #dde5df;text-align:left;padding:11px 10px;vertical-align:top}th{background:#f5f7f5}.notice{border-left:3px solid #b7852e;padding:5px 0 5px 16px;color:#645024}footer{border-top:1px solid #dde5df;margin-top:36px;padding-top:16px;color:#6c776f;font-size:13px}@media(max-width:540px){main{padding:24px 18px 40px}h1{font-size:24px}table{font-size:13px}td,th{padding:10px 5px}}@media print{main{max-width:none;padding:0}h2{break-after:avoid}tr{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<header><h1>顺序矢量素描</h1><p>序描 SeqSketch 0.1.0 · 使用与换电脑指南 · 2026-09-08</p></header>
+<h2>在另一台电脑上开始使用</h2>
+<p>免安装版适用于 Windows 10/11 的 64 位 Intel/AMD 电脑。使用较新版本的 Chrome 或 Edge，不需要安装开发环境，运行时无需联网。</p>
+<ol>
+<li>把<strong>整个“顺序矢量素描”文件夹</strong>复制到新电脑。通过压缩包传输时，先完整解压。</li>
+<li>双击<strong>启动工具.cmd</strong>，浏览器会自动打开绘图工具。</li>
+<li>若没有自动打开，请在浏览器输入 <a href="http://127.0.0.1:5317/">http://127.0.0.1:5317/</a>。</li>
+<li>选择“作品 > 新建作品”，在作品侧栏填写匿名作者编号，然后绘画。</li>
+<li>结束前确认“已在本机保存”，导出完整工程备份，再双击<strong>关闭工具.cmd</strong>。</li>
+</ol>
+<p>每台电脑都要启动自己的工具。关闭网页后服务仍在后台运行；重启电脑后需要重新双击启动。</p>
+<h2>把作品带到新电脑</h2>
+<p class="notice"><strong>复制程序文件夹不会复制浏览器里的作品。</strong> 自动保存只是当前浏览器中的本机保存，必须另外备份。</p>
+<ol>
+<li>在原电脑打开作品，选择“导出数据 > 完整工程”。</li>
+<li>将导出的 <code>*.seqsketch.json</code> 文件复制到新电脑。</li>
+<li>在新电脑启动工具，选择“作品 > 打开工程”，即可继续修改。</li>
+</ol>
+<p>此前开发版使用 <code>127.0.0.1:5173</code>，本便携版使用 <code>127.0.0.1:5317</code>。两个地址的作品库独立；旧作品也需要导出再导入。更换浏览器、用户配置或使用无痕窗口，也不会看到原作品库。</p>
+<h2>绘画与数据导出</h2>
+<p>用数位笔或鼠标手绘，使用固定黑色线宽，不使用压感。点击曲线列表或“曲线节点”可逐段编辑。一次落笔可能生成多段贝塞尔曲线；修改保留原始顺序，删除的曲线不会进入训练数据。</p>
+<p>顶部<strong>记录模式</strong>提供两个选项：“贝塞尔曲线”将每段作为一条线；“一次落笔”将落笔到抬笔产生的所有保留段作为一条线。列表、回放与导出跟随模式切换。落笔模式仍可通过侧栏的“落笔内曲线”选择具体段进行编辑。</p>
+<table><thead><tr><th>导出项</th><th>用途</th></tr></thead><tbody>
+<tr><td>完整工程</td><td>备份、换电脑、重新打开和继续绘画。包含曲线和原始采样点。</td></tr>
+<tr><td>训练数据</td><td>研究使用的有序贝塞尔曲线 JSON，仅包含最终保留的曲线。</td></tr>
+<tr><td>矢量作品</td><td>SVG 矢量文件，用于查看或其他软件处理。</td></tr>
+</tbody></table>
+<p>每件作品都建议保存<strong>完整工程 + 训练数据</strong>。在导出窗口的<strong>导出文件夹</strong>中填写完整路径，例如 <code>D:\素描数据</code>，再点击导出项。工具会记住位置，并创建尚不存在的文件夹；路径位于运行本地服务的电脑上，换电脑后请重新填写。</p>
+<p>文件名自动包含作品名称和作品 ID 的前 8 位，<strong>同名文件会更新</strong>。两种模式的训练数据和 SVG 分别带有 <code>.curve</code> 或 <code>.stroke</code>，可以同时保留。训练 JSON 不能代替完整工程重新打开。</p>
+<p>训练数据 1.1 使用 <code>lines</code> 数组表示当前模式的训练序列，<code>sequenceUnit</code> 标记模式。旧工程可以继续打开，默认采用贝塞尔曲线模式。</p>
+<h2>删除作品</h2>
+<p>打开“作品库”，点击作品行右侧的垃圾桶并确认。删除当前作品会打开其他作品；删除最后一件后会创建空白作品。已经导出的磁盘文件不受影响。</p>
+<h2>多人采集</h2>
+<ul><li>给每位参与者分配固定的匿名作者编号；共用电脑时记得更换编号。</li><li>每台电脑独立保存，定期汇总各自导出的工程和训练文件。当前没有云端同步。</li><li>内置人像示例带有 <code>source: "example"</code>，不应作为参与者样本用于训练。</li><li>正式收集几百张作品前，先用实际数位板进行少量试画，检查排线、保存和重新打开。</li></ul>
+<h2>文件与源码</h2>
+<table><thead><tr><th>目录或文件</th><th>内容</th></tr></thead><tbody>
+<tr><td><code>source/</code></td><td>完整源代码、测试、依赖锁定文件与开发说明。</td></tr>
+<tr><td><code>app/</code></td><td>已经构建的绘图网站，不要直接双击其中的 HTML 运行。</td></tr>
+<tr><td><code>runtime/</code></td><td>运行组件、启动脚本、许可证，以及运行后生成的日志。</td></tr>
+<tr><td><a href="使用说明.md">使用说明.md</a></td><td>完整说明，包含常见问题、源码修改及 macOS/Linux 运行方法。</td></tr>
+<tr><td><a href="数据格式.md">数据格式.md</a></td><td>研究数据字段、坐标和顺序规则。</td></tr>
+<tr><td><a href="验证记录.md">验证记录.md</a> / <a href="便携版验证.md">便携版验证.md</a></td><td>已完成的验证及尚待实测的项目。</td></tr>
+</tbody></table>
+<h2>打不开时</h2>
+<p>先检查文件夹是否完整解压。若提示端口被占用，请关闭之前启动的便携版；若浏览器没自动打开，手动访问固定地址。仍失败时，查看 <code>runtime/server.log</code>。同一台电脑上不要同时启动不同版本；移动文件夹前先关闭服务。</p>
+<p>修改源码需要安装 Node.js 22.12 或更新的 LTS 版本，并按 <code>source/README.md</code> 的说明运行。免安装包中的运行组件不含 npm 开发工具。</p>
+<footer>绘图几何基于 Paper.js。应用开源依赖声明见 app/THIRD_PARTY_NOTICES.md，Node.js 声明见 runtime/NODE-LICENSE.txt。本版尚需真实数位板与正式采集流程验证。</footer>
+</main></body></html>
